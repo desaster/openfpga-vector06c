@@ -1,0 +1,227 @@
+{
+  "interact": {
+    "magic": "APF_VER_1",
+    "variables": [
+      {
+        "name": "Gamepad Mode",
+        "id": 20,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "writeonly": true,
+        "address": "0x60",
+        "defaultval": 0,
+        "options": [
+          {
+            "value": 0,
+            "name": "Keyboard"
+          },
+          {
+            "value": 1,
+            "name": "Joystick"
+          }
+        ]
+      },
+      {
+        "name": "CPU Type/Speed",
+        "id": 21,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "writeonly": true,
+        "address": "0x70",
+        "defaultval": 0,
+        "options": [
+          { "value": 0, "name": "i8080 3 MHz (Default)" },
+          { "value": 1, "name": "i8080 6 MHz (Turbo)" },
+          { "value": 2, "name": "Z80 3 MHz (Expansion)" },
+          { "value": 3, "name": "Z80 6 MHz (Turbo)" }
+        ]
+      },
+      {
+        "name": "Map A",
+        "id": 30,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "writeonly": true,
+        "address": "0xA0",
+        "defaultval": 1,
+        "options": [
+          { "value": 0, "name": "None" },
+          { "value": 64, "name": "Space" },
+          { "value": 3, "name": "VK (Enter)" },
+          { "value": 65, "name": "SS (Shift)" },
+          { "value": 66, "name": "US (Ctrl)" },
+          { "value": 1, "name": "TAB" },
+          { "value": 2, "name": "PS (Alt)" },
+          { "value": 4, "name": "ZB (BS)" },
+          { "value": 6, "name": "Up" }
+        ]
+      },
+      {
+        "name": "Map B",
+        "id": 31,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "writeonly": true,
+        "address": "0xA4",
+        "defaultval": 6,
+        "options": [
+          { "value": 0, "name": "None" },
+          { "value": 64, "name": "Space" },
+          { "value": 3, "name": "VK (Enter)" },
+          { "value": 65, "name": "SS (Shift)" },
+          { "value": 66, "name": "US (Ctrl)" },
+          { "value": 1, "name": "TAB" },
+          { "value": 2, "name": "PS (Alt)" },
+          { "value": 4, "name": "ZB (BS)" },
+          { "value": 6, "name": "Up" }
+        ]
+      },
+      {
+        "name": "Map X",
+        "id": 32,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "writeonly": true,
+        "address": "0xA8",
+        "defaultval": 3,
+        "options": [
+          { "value": 0, "name": "None" },
+          { "value": 64, "name": "Space" },
+          { "value": 3, "name": "VK (Enter)" },
+          { "value": 65, "name": "SS (Shift)" },
+          { "value": 66, "name": "US (Ctrl)" },
+          { "value": 1, "name": "TAB" },
+          { "value": 2, "name": "PS (Alt)" },
+          { "value": 4, "name": "ZB (BS)" },
+          { "value": 6, "name": "Up" }
+        ]
+      },
+      {
+        "name": "Map Y",
+        "id": 33,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "writeonly": true,
+        "address": "0xAC",
+        "defaultval": 5,
+        "options": [
+          { "value": 0, "name": "None" },
+          { "value": 64, "name": "Space" },
+          { "value": 3, "name": "VK (Enter)" },
+          { "value": 65, "name": "SS (Shift)" },
+          { "value": 66, "name": "US (Ctrl)" },
+          { "value": 1, "name": "TAB" },
+          { "value": 2, "name": "PS (Alt)" },
+          { "value": 4, "name": "ZB (BS)" },
+          { "value": 6, "name": "Up" }
+        ]
+      },
+      {
+        "name": "Map Select",
+        "id": 35,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "writeonly": true,
+        "address": "0xB0",
+        "defaultval": 8,
+        "options": [
+          { "value": 0, "name": "None" },
+          { "value": 64, "name": "Space" },
+          { "value": 3, "name": "VK (Enter)" },
+          { "value": 65, "name": "SS (Shift)" },
+          { "value": 66, "name": "US (Ctrl)" },
+          { "value": 1, "name": "TAB" },
+          { "value": 2, "name": "PS (Alt)" },
+          { "value": 4, "name": "ZB (BS)" },
+          { "value": 67, "name": "RUS/LAT" },
+          { "value": 11, "name": "AR2 (Esc)" },
+        ]
+      },
+      {
+        "name": "Map R1",
+        "id": 34,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "writeonly": true,
+        "address": "0xB4",
+        "defaultval": 2,
+        "options": [
+          { "value": 0, "name": "None" },
+          { "value": 64, "name": "Space" },
+          { "value": 3, "name": "VK (Enter)" },
+          { "value": 65, "name": "SS (Shift)" },
+          { "value": 66, "name": "US (Ctrl)" },
+          { "value": 1, "name": "TAB" },
+          { "value": 2, "name": "PS (Alt)" },
+          { "value": 4, "name": "ZB (BS)" },
+          { "value": 67, "name": "RUS/LAT" },
+          { "value": 11, "name": "AR2 (Esc)" },
+        ]
+      },
+      {
+        "name": "Stereo Mix",
+        "id": 23,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "writeonly": true,
+        "address": "0x90",
+        "defaultval": 0,
+        "options": [
+          {
+            "value": 0,
+            "name": "None"
+          },
+          {
+            "value": 1,
+            "name": "25%"
+          },
+          {
+            "value": 2,
+            "name": "50%"
+          },
+          {
+            "value": 3,
+            "name": "Mono"
+          }
+        ]
+      },
+      {
+        "name": "Reset (VVOD)",
+        "id": 10,
+        "type": "action",
+        "enabled": true,
+        "writeonly": true,
+        "address": "0x50",
+        "value": 3
+      },
+      {
+        "name": "Cold Reboot",
+        "id": 12,
+        "type": "action",
+        "enabled": true,
+        "writeonly": true,
+        "address": "0x50",
+        "value": 1
+      },
+      {
+        "name": "Reset Palette",
+        "id": 13,
+        "type": "action",
+        "enabled": true,
+        "writeonly": true,
+        "address": "0x50",
+        "value": 4
+      }
+    ],
+    "messages": []
+  }
+}

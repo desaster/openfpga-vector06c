@@ -1,0 +1,69 @@
+# https://editorconfig.org
+#
+# this project has files from various sources, and we'll try to preserve their
+# original code style to minimize diffs
+#
+
+root = true
+
+# Default: Unix line endings, final newline, trim trailing whitespace
+[*]
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+charset = utf-8
+
+[rtl/**/*.{sv,v,vhd}]
+indent_style = tab
+end_of_line = lf
+trim_trailing_whitespace = false
+
+# APF framework
+[apf/*.{v,sv}]
+indent_style = space
+indent_size = 4
+
+[core_bridge_cmd.v]
+indent_style = space
+indent_size = 4
+
+# APF bridge helpers (from openfpga-template) — 2 spaces
+[data_loader.sv]
+indent_style = space
+indent_size = 2
+
+[sound_i2s.sv]
+indent_style = space
+indent_size = 2
+
+[sync_fifo.sv]
+indent_style = space
+indent_size = 2
+
+# Quartus project files
+[*.{qsf,qpf,qip,sdc}]
+end_of_line = crlf
+trim_trailing_whitespace = false
+
+# JSON
+[*.json]
+indent_style = space
+indent_size = 2
+
+# Shell scripts
+[*.sh]
+indent_style = space
+indent_size = 4
+
+# TCL
+[*.tcl]
+indent_style = space
+indent_size = 4
+
+# Makefiles — must use tabs
+[Makefile]
+indent_style = tab
+
+# Markdown
+[*.md]
+trim_trailing_whitespace = false

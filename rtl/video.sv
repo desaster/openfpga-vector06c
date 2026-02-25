@@ -38,11 +38,6 @@ module video
 	output        VGA_VS,
 	output        VGA_HS,
 	output        VGA_DE,
-	
-	// TV/VGA
-	input         scandoubler,
-	input         hq2x,
-	inout  [21:0] gamma_bus,
 
 	// Video memory
 	output [12:0] vaddr,
@@ -56,6 +51,7 @@ module video
 	input   [7:0] scroll,
 	input   [3:0] border,
 	input         mode512,
+	input         pal_reset,
 	output reg    retrace
 );
 
@@ -67,7 +63,7 @@ wire [8:0] vcr = vc + ~roll;
 reg  [7:0] roll;
 reg        HBlank, HSync;
 reg        VBlank, VSync;
-reg        viden, dot;
+reg        viden, dot, rgb_en;
 reg  [7:0] idx0, idx1, idx2, idx3;
 
 reg mode512_lock;
@@ -120,7 +116,8 @@ always @(posedge clk_sys) begin
 		end
 
 		dot   <= ~hc[0];
-		viden <= ~HBlank & ~VBlank;
+		viden <= ~HBlank & ~VBlank & ~vc[8];
+		rgb_en <= ~HBlank;
 		if(~HBlank & ~VBlank) mode512_acc <= mode512_acc | mode512;
 	end
 end
@@ -132,7 +129,7 @@ always @(posedge clk_sys) begin
 	reg old_we;
 	old_we <= io_we;
 
-	if(reset) begin
+	if(reset | pal_reset) begin
 		palette[0]  <= ~8'b11111111;
 		palette[1]  <= ~8'b01010101;
 		palette[2]  <= ~8'b11010111;
@@ -154,17 +151,20 @@ always @(posedge clk_sys) begin
 	end
 end
 
-wire [3:0] R = {4{viden}} & {palette[color_idx][2:0], palette[color_idx][2]};
-wire [3:0] G = {4{viden}} & {palette[color_idx][5:3], palette[color_idx][5]};
-wire [3:0] B = {4{viden}} & {palette[color_idx][7:6], palette[color_idx][7:6]};
+// RGB gated by HBlank only, not VBlank, so border color is output on
+// non-content lines. Pocket's pocket_de controls which lines are displayed.
+// On MiSTer, VGA_DE is 0 for these lines so the mixer ignores them.
+wire [3:0] R = {4{rgb_en}} & {palette[color_idx][2:0], palette[color_idx][2]};
+wire [3:0] G = {4{rgb_en}} & {palette[color_idx][5:3], palette[color_idx][5]};
+wire [3:0] B = {4{rgb_en}} & {palette[color_idx][7:6], palette[color_idx][7:6]};
 
-video_mixer #(.LINE_LENGTH(768), .HALF_DEPTH(1), .GAMMA(1)) video_mixer
-(
-	.*,
-	.CLK_VIDEO(clk_sys),
-	.HDMI_FREEZE(0),
-	.freeze_sync(),
-	.ce_pix(ce_12mp & (mode512_lock | ~dot))
-);
+// Direct video output (no MiSTer video_mixer)
+assign CE_PIXEL = ce_12mp;
+assign VGA_R = {R, R};
+assign VGA_G = {G, G};
+assign VGA_B = {B, B};
+assign VGA_HS = HSync;
+assign VGA_VS = VSync;
+assign VGA_DE = viden;
 
 endmodule

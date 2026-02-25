@@ -1,0 +1,13 @@
+# Normalize line endings: LF in repo, native on checkout
+* text=auto
+
+# Quartus project files — always CRLF (matches Quartus output behavior)
+*.qsf text eol=crlf
+*.qpf text eol=crlf
+*.qip text eol=crlf
+*.sdc text eol=crlf
+
+# Binary files — never touch
+*.bin binary
+*.png binary
+*.rbf binary

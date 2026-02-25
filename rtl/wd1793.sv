@@ -36,6 +36,7 @@ module wd1793 #(parameter RWMODE=0, EDSK=1)
 	output       drq,         // DMA request
 	output       intrq,
 	output       busy,
+	output [7:0] track,
 
 	input        wp,          // write protect
 
@@ -82,6 +83,7 @@ assign sd_lba    = scan_active ? scan_addr[19:9] : buff_a[19:9] + sd_block;
 assign prepare   = EDSK ? scan_active : img_mounted;
 assign buff_addr = {buff_a[19:9], 9'd0} + byte_addr;
 assign buff_read = ((addr == A_DATA) && buff_rd);
+assign track    = disk_track;
 
 reg   [7:0] sectors_per_track, edsk_spt = 0;
 wire [10:0] sector_size = 11'd128 << wd_size_code;

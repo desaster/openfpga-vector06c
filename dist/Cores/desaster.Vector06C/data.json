@@ -1,0 +1,62 @@
+{
+  "data": {
+    "magic": "APF_VER_1",
+    "data_slots": [
+      {
+        "name": "ROM/COM",
+        "id": 1,
+        "required": false,
+        "parameters": "0x09",
+        "extensions": ["rom", "com"],
+        "address": "0x10000100",
+        "size_maximum": "0xFF00"
+      },
+      {
+        "name": "C00/R0M",
+        "id": 2,
+        "required": false,
+        "parameters": "0x09",
+        "extensions": ["c00", "r0m"],
+        "address": "0x10000000",
+        "size_maximum": "0x10000"
+      },
+      {
+        "name": "Floppy Disk A",
+        "id": 3,
+        "required": false,
+        "parameters": "0x01",
+        "deferload": true,
+        "extensions": ["fdd"],
+        "size_maximum": "0x100000"
+      },
+      {
+        "name": "Floppy Disk B",
+        "id": 4,
+        "required": false,
+        "parameters": "0x01",
+        "deferload": true,
+        "extensions": ["fdd"],
+        "size_maximum": "0x100000"
+      },
+      {
+        "name": "EDD (Ramdisk)",
+        "id": 6,
+        "required": false,
+        "parameters": "0x09",
+        "extensions": ["edd"],
+        "address": "0x10010000",
+        "size_maximum": "0x40000"
+      },
+      {
+        "name": "Boot ROM",
+        "id": 5,
+        "required": true,
+        "parameters": "0x203",
+        "filename": "boot.bin",
+        "extensions": ["bin"],
+        "address": "0x10050000",
+        "size_maximum": "0x8000"
+      }
+    ]
+  }
+}
