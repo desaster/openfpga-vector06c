@@ -20,6 +20,10 @@ This is a [Vector-06C](https://en.wikipedia.org/wiki/Vector-06C) core for [Analo
 - Z80 CPU (experimental)
 - Virtual Keyboard (new for Pocket)
 
+### Demo video
+
+![v06c_showcase](https://github.com/user-attachments/assets/ddac5688-01ad-4160-bf57-74bcbf4847a5)
+
 ### Installation
 
 Download and unzip the .zip from the releases to the root of your Pocket's SD card.
